@@ -1,0 +1,32 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.payment";
+option java_outer_classname = "PaymentProto";
+
+package payment;
+
+// payment service definition.
+service PaymentService {
+  rpc SendPayment (PaymentRequest) returns (Void) {}
+  rpc GetPayment (PaymentRequest) returns (PaymentReply) {}
+}
+
+// request message containing the user's name.
+message PaymentRequest {
+  string username = 1;
+  string transaction_id = 2;
+}
+
+// response message containing details for payment
+message PaymentReply {
+  string message = 1;
+}
+
+// return type is mandatory hence need to define void
+message Void {
+}
+
+
+

@@ -1,0 +1,4 @@
+FROM scratch
+ADD server1_docker /
+CMD ["/server1_docker"]
+
