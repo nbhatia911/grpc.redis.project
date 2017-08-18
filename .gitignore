@@ -2,4 +2,7 @@ check_*
 cscope.files
 cscope.out
 tags
-
+client/client1
+client/client1_docker
+server/server1
+server/server1_docker
