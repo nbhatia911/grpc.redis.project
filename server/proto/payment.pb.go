@@ -34,7 +34,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-// The request message containing the user's name.
+// request message containing the user's name.
 type PaymentRequest struct {
 	Username      string `protobuf:"bytes,1,opt,name=username" json:"username,omitempty"`
 	TransactionId string `protobuf:"bytes,2,opt,name=transaction_id,json=transactionId" json:"transaction_id,omitempty"`
@@ -59,7 +59,7 @@ func (m *PaymentRequest) GetTransactionId() string {
 	return ""
 }
 
-// The response message containing details for payment
+// response message containing details for payment
 type PaymentReply struct {
 	Message string `protobuf:"bytes,1,opt,name=message" json:"message,omitempty"`
 }
@@ -76,7 +76,7 @@ func (m *PaymentReply) GetMessage() string {
 	return ""
 }
 
-// Return type is mandatory hence need to define Void
+// return type is mandatory hence need to define void
 type Void struct {
 }
 
