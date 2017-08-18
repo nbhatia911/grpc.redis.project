@@ -1,7 +1,7 @@
 # grpc.redis.project
 Sample project to demo grpc client server (running inside docker) and using redis api in go language to communicate with redis server
 
-Download github.com/go-redis/redis
+Download https://github.com/go-redis/redis/
 
 compile.sh
 - script to compile .proto files for go/grpc
