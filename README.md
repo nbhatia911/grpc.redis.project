@@ -16,13 +16,14 @@ Note: Project contains payment.pb.go which is auto generated from payment.proto 
 
 
 
-USEFUL COMMANDS
+### USEFUL COMMANDS
 
 apt-get install lxc lxctl lxc-templates
 
 apt-get -y install docker.io
 
 
+#### DOCKER
 
 docker pull ubuntu - this will download docker from internet
 
@@ -44,6 +45,7 @@ docker start container_id
 
 docker run -i -t ubuntu /bin/bash - starts docker and gives bash shell
 
+#### LXC
 
 lxc-create -n ubuntu-container -t ubuntu -  this will download 300 MB from internet
 
