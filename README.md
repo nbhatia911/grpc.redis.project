@@ -11,3 +11,4 @@ compile.sh
 start_docker_app.sh
 - starts docker server image 
 
+Project contains payment.pb.go which is auto generated from payment.proto using protoc compiler. 
