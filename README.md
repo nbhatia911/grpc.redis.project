@@ -61,11 +61,13 @@ kubeadm init --apiserver-advertise-address=192.168.56.106 --token-ttl 0
 
 ### Get cluster IP using
 
+<pre>
 kubectl get svc
 
 NAME         CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-
 kubernetes   10.96.0.1    <none>        443/TCP   2h
+
+</pre>
 
 
 ## USEFUL COMMANDS
