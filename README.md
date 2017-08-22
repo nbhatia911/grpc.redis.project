@@ -73,12 +73,11 @@ kubernetes   10.96.0.1    <none>        443/TCP   2h
 
 #### To delete and reset kubernetes on master/slave
 
+<pre>
+
 kubeadm reset
-
 rm -rf /etc/kubernetes/*
-
 rm -rf /var/run/kubernetes/*
-
 rm -rf /run/kubernetes/
 
 
@@ -87,82 +86,64 @@ kubeadm init --apiserver-advertise-address=192.168.56.106 --token-ttl 0 - This s
 kubectl delete namespace sock-shop
 
 kubectl create namespace sock-shop
-
 kubectl -n sock-shop get svc front-end
-
 kubectl create -f https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml
-
 kubectl proxy - starts dashboard
 
 kubectl get all
-
 kubectl get pods --all-namespaces
-
 kubectl describe services
-
 kubectl get nodes
 
 kubectl describe node minion01 - check logs
 
+</pre>
+
 ### KUBERNETES MINION
 
+<pre>
+
 kubeadm join --token 63b3a2.270385143487e152 192.168.56.106:6443
-
 kubectl get pods -n sock-shop
-
 kubectl describe svc front-end -n sock-shop
- 
+
+</pre>
 
 ### DOCKER
 
+<pre>
+
 docker pull ubuntu - this will download docker from internet
-
 docker ps -a -q - list of all dockers containers running
-
 docker rm `docker ps -a -q` - remove all dockers containers, this will not remove docker images installed
-
 docker run -p 6379:6379 --name redis-docker-server -d redis - run docker and redirect all traffic on port 6379 to redis docker
-
 docker images - list all docker images installed
-
 docker rmi image_name - remove docker image installed
-
 docker inspect container_id - if you want to check docker ipaddress
-
 docker stop container_id
-
 docker start container_id
-
 docker run -i -t ubuntu /bin/bash - starts docker and gives bash shell
+
+</pre>
 
 ### LXC
 
+<pre>
+
 lxc-create -n ubuntu-container -t ubuntu -  this will download 300 MB from internet
-
 lxc-start -n ubuntu-container -d
-
 lxc-ls --fancy
-
 lxc-console -n ubuntu-container
-
 lxc-info -n ubuntu-container
-
 lxc-stop -n ubuntu-container
-
 lxc-ls --fancy ubuntu-container
-
 lxc-clone ubuntu-container ubuntu-container2 - this will clone LXC just like we clone VM image
-
 lxc-snapshot -n ubuntu-container - snapshot saved to /var/lib/lxcsnaps/
-
 lxc-snapshot -n ubuntu-container -r snap0 - restore from snapshot
-
 lxc-destroy -n ubuntu-container - this will delete LXC
-
 lxc-cgroup -n ubuntu-container cpuset.cpus - print cgroup config variables
 
-
-
+</pre>
 
 # STEPS TO CONFIGURE UBUNTU 16.04 XENIAL
 
