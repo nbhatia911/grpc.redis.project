@@ -106,7 +106,7 @@ kubectl describe node minion01 - check logs
 
 ### KUBERNETES MINION
 
-kubeadm join --token 63b3a2.270385143487e152 192.168.56.103:6443
+kubeadm join --token 63b3a2.270385143487e152 192.168.56.106:6443
 
 kubectl get pods -n sock-shop
 
@@ -226,24 +226,16 @@ apt-get -y install kubectl=1.7.3-01 kubelet=1.7.3-01 kubeadm=1.7.3-01 kubernetes
 
 ## CHECK INSTALLATION
 
+<pre>
 docker verion
-
 kubectl version
-
 dpkg -l  |grep kube
-
 ii  kubeadm                                    1.7.3-01                                   amd64        Kubernetes Cluster Bootstrapping Tool
-
 ii  kubectl                                    1.7.3-01                                   amd64        Kubernetes Command Line Tool
-
 ii  kubelet                                    1.7.3-01                                   amd64        Kubernetes Node Agent
-
 ii  kubernetes-cni                             0.5.1-00                                   amd64        Kubernetes CNI
-
 root@tpi-VirtualBox:~# dpkg -l  |grep docker
-
 rc  docker-engine                              17.05.0~ce-0~ubuntu-xenial                 amd64        Docker: the open-source application container engine
-
 ii  docker.io                                  1.12.6-0ubuntu1~16.04.1                    amd64        Linux container runtime
-
 ii  runc                                       1.0.0~rc2+docker1.12.6-0ubuntu1~16.04.1    amd64        Open Container Project - runtime
+</pre>
