@@ -3,7 +3,9 @@
 Sample project to demo grpc client server (running inside docker) and using redis api in go language to communicate with redis server. Deployment for redis server and grpc server done on kubernetes in Virtual Box VM.
 
 Redis client - https://github.com/go-redis/redis/
+
 GRPC Server docker hub image - https://hub.docker.com/r/nbhatia911/grpc.redis.project/ 
+
 Redis Server docker hub image - https://hub.docker.com/_/redis/
 
 ## COMPILE
