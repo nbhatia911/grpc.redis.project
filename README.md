@@ -151,7 +151,7 @@ lxc-cgroup -n ubuntu-container cpuset.cpus - print cgroup config variables
 
 # STEPS TO CONFIGURE UBUNTU 16.04 XENIAL
 
-## INSTALL DOCKER VERSION
+## INSTALL DOCKER VERSION 17.05
 
 <pre>
 
@@ -185,7 +185,7 @@ docker run hello-world
 
 </pre>
 
-## NOW INSTALL KUBERNETES
+## INSTALL KUBERNETES VERSION 1.7.3
 
 <pre>
 
@@ -204,6 +204,23 @@ apt-get -y install kubectl=1.7.3-01 kubelet=1.7.3-01 kubeadm=1.7.3-01 kubernetes
 
 docker verion
 kubectl version
+
+kubectl get pods --all-namespaces
+NAMESPACE     NAME                                     READY     STATUS    RESTARTS   AGE
+default       mygrpcserver-2593759886-ktgzb            1/1       Running   0          1h
+default       redis-3356651156-t7ktp                   1/1       Running   0          1h
+kube-system   etcd-tpi-virtualbox                      1/1       Running   5          9h
+kube-system   kube-apiserver-tpi-virtualbox            1/1       Running   5          9h
+kube-system   kube-controller-manager-tpi-virtualbox   1/1       Running   5          9h
+kube-system   kube-dns-2425271678-j626h                3/3       Running   15         9h
+kube-system   kube-proxy-61xpc                         1/1       Running   5          9h
+kube-system   kube-proxy-bmrl8                         1/1       Running   3          6h
+kube-system   kube-scheduler-tpi-virtualbox            1/1       Running   5          9h
+kube-system   kubernetes-dashboard-3313488171-8lk0n    1/1       Running   5          8h
+kube-system   weave-net-gw3pr                          2/2       Running   13         6h
+kube-system   weave-net-x99m5                          2/2       Running   10         8h
+
+
 dpkg -l  |grep kube
 ii  kubeadm                                    1.7.3-01                                   amd64        Kubernetes Cluster Bootstrapping Tool
 ii  kubectl                                    1.7.3-01                                   amd64        Kubernetes Command Line Tool
