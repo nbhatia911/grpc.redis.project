@@ -36,13 +36,15 @@ Copy folder kubernetes-deployment to MASTER node and run start_create_microservi
 
 #### Verify deployment using 
 
-#### kubectl get pods --all-namespaces, kubectl get all
+<pre>
+
+kubectl get pods --all-namespaces, kubectl get all
 
 NAMESPACE     NAME                                     READY     STATUS    RESTARTS   AGE
-
 default       mygrpcserver-2593759886-ktgzb            1/1       Running   0          9m
-
 default       redis-3356651156-t7ktp                   1/1       Running   0          9m
+
+</pre>
 
 
 
