@@ -8,7 +8,7 @@ Redis client - https://github.com/go-redis/redis/
 
 Redis Server docker hub image - https://hub.docker.com/_/redis/
 
-## KUBERNETES DASHBOARD
+## KUBERNETES DASHBOARD - Click on pics to enlarge
 
 <p align="center">
   <img src="https://github.com/nbhatia911/grpc.redis.project/blob/master/kubernetes-dashboard-pics/01_kubernetes-dasboard-all-nodes.jpg?raw=true" width="320"/>
