@@ -2,9 +2,9 @@
 # grpc.redis.project
 Sample project to demo grpc client server (running inside docker) and using redis api in go language to communicate with redis server. Deployment for redis server and grpc server done on kubernetes in Virtual Box VM.
 
-Redis client - https://github.com/go-redis/redis/
-
 GRPC Server docker hub image - https://hub.docker.com/r/nbhatia911/grpc.redis.project/ 
+
+Redis client - https://github.com/go-redis/redis/
 
 Redis Server docker hub image - https://hub.docker.com/_/redis/
 
@@ -38,7 +38,7 @@ default       redis-3356651156-t7ktp                   1/1       Running   0    
 
 
 ## IMPORTANT
-1. If running kubernetes on VM make sure that MASTER/SLAVE have unique hostnames.
+1. If running kubernetes on VM make sure that MASTER/SLAVE have unique hostnames. Edit /etc/hostname. IP address must be routable. Add SLAVES ip address in MASTER
 
 2. If MASTER is started with IP 192.168.56.106, then add below route to all SLAVES. If not weave net will keep crashing.
 
@@ -55,9 +55,6 @@ kubectl get svc
 NAME         CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 
 kubernetes   10.96.0.1    <none>        443/TCP   2h
-
-
-
 
 
 ## USEFUL COMMANDS
