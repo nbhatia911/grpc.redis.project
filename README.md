@@ -8,6 +8,15 @@ Redis client - https://github.com/go-redis/redis/
 
 Redis Server docker hub image - https://hub.docker.com/_/redis/
 
+## KUBERNETES DASHBOARD
+
+<p align="center">
+  <img src="https://github.com/nbhatia911/grpc.redis.project/blob/master/kubernetes-dashboard-pics/01_kubernetes-dasboard-all-nodes.jpg" width="320"/>
+  <img src="https://github.com/nbhatia911/grpc.redis.project/blob/master/kubernetes-dashboard-pics/02_kubernetes-dasboard-pods-running-on-slave.jpg" width="320"/>
+  <img src="https://github.com/nbhatia911/grpc.redis.project/blob/master/kubernetes-dashboard-pics/03_kubernetes-dasboard-grpc-server-pod-details01.jpg" width="320"/>
+  <img src="https://github.com/nbhatia911/grpc.redis.project/blob/master/kubernetes-dashboard-pics/04_kubernetes-dasboard-grpc-server-pod-details02.jpg" width="320"/>
+</p>
+
 ## COMPILE
 #### server/compile.sh
 - script to compile .proto files for go/grpc
