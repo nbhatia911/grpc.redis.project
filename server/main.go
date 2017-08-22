@@ -34,7 +34,7 @@ func (s *server) GetPayment(ctx context.Context, in *pb.PaymentRequest) (*pb.Pay
 
 func GetDataFromDB(Username string) (rv string) {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "172.17.0.4:6379",
+		Addr:     "10.44.0.1:6379",
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})
@@ -53,52 +53,16 @@ func GetDataFromDB(Username string) (rv string) {
 
 func SetDataToDB(Username, TransactionId string) {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "172.17.0.4:6379",
+		Addr:     "10.44.0.1:6379",
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})
 
 	err := client.Set(Username, TransactionId, 0).Err()
 	if err != nil {
-		panic(err)
+		return
+		//panic(err)
 	}
-
-	return
-}
-
-func PushDataToDB(Username, TransactionId string) (rv string) {
-	client := redis.NewClient(&redis.Options{
-		Addr:     "172.17.0.4:6379",
-		Password: "", // no password set
-		DB:       0,  // use default DB
-	})
-
-	pong, err := client.Ping().Result()
-	fmt.Println(pong, err)
-	// Output: PONG <nil>
-
-	err = client.Set(Username, TransactionId, 0).Err()
-	if err != nil {
-		panic(err)
-	}
-
-	val, err := client.Get(Username).Result()
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(Username, val)
-	rv = val
-
-	val2, err := client.Get("key2").Result()
-	if err == redis.Nil {
-		fmt.Println("key2 does not exists")
-	} else if err != nil {
-		panic(err)
-	} else {
-		fmt.Println("key2", val2)
-	}
-	// Output: key value
-	// key2 does not exists
 
 	return
 }

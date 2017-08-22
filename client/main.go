@@ -10,12 +10,31 @@ import (
 )
 
 const (
-	address              = "localhost:50051"
+	defaultAddress       = "localhost:50051"
 	defaultName          = "Nikhil"
 	defaultTransactionId = "77777777"
 )
 
 func main() {
+
+	// read arguments from cmd line
+	address := defaultAddress
+	name := defaultName
+	transactionid := defaultTransactionId
+	oper := "NULL"
+	if len(os.Args) > 3 && os.Args[2] == "GET" {
+		address = os.Args[1]
+		oper = os.Args[2]
+		name = os.Args[3]
+	} else if len(os.Args) > 4 && os.Args[2] == "SET" {
+		address = os.Args[1]
+		oper = os.Args[2]
+		name = os.Args[3]
+		transactionid = os.Args[4]
+	} else {
+		log.Printf("Eg: ./client ip:port GET/SET username id")
+		return
+	}
 
 	// set up a connection to grpc server
 	conn, err := grpc.Dial(address, grpc.WithInsecure())
@@ -25,23 +44,6 @@ func main() {
 	defer conn.Close()
 
 	c := pb.NewPaymentServiceClient(conn)
-
-	// read arguments from cmd line
-	name := defaultName
-	transactionid := defaultTransactionId
-	oper := "NULL"
-	if len(os.Args) > 2 && os.Args[1] == "GET" {
-		oper = os.Args[1]
-		name = os.Args[2]
-	} else if len(os.Args) > 3 && os.Args[1] == "SET" {
-		oper = os.Args[1]
-		name = os.Args[2]
-		transactionid = os.Args[3]
-	} else {
-		log.Printf("Eg: ./client GET/SET username id")
-		return
-	}
-
 	// contact the server using gRPC calls
 	if oper == "SET" {
 		r1, err := c.SendPayment(context.Background(), &pb.PaymentRequest{Username: name, TransactionId: transactionid})

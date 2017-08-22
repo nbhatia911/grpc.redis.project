@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: mygrpcserver
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mygrpcserver
+    spec:
+      containers:
+      - image: nbhatia911/grpc.redis.project
+        name: mygrpcserver
+        resources: {}
+      restartPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mygrpcserver
+  name: mygrpcserver
+spec:
+  clusterIP: None
+  ports:
+  - name: headless
+    port: 50051
+    targetPort: 50051
+  selector:
+    service.name: mygrpcserver
+status:
+  loadBalancer: {}
+
