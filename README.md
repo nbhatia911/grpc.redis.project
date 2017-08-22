@@ -161,3 +161,89 @@ lxc-destroy -n ubuntu-container - this will delete LXC
 
 lxc-cgroup -n ubuntu-container cpuset.cpus - print cgroup config variables
 
+
+
+
+# STEPS TO CONFIGURE UBUNTU 16.04 XENIAL
+
+## INSTALL DOCKER VERSION
+
+apt-get update
+
+apt-get remove docker docker-engine docker.io
+
+apt-get update
+
+apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+apt-key fingerprint 0EBFCD88
+
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+apt-get update
+
+
+apt-get install apt-transport-https ca-certificates
+
+apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
+echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" > /etc/apt/sources.list.d/docker.list
+
+apt-get update
+
+apt-cache policy docker-engine
+
+apt-get -y install docker-engine=17.05.0~ce-0~ubuntu-xenial docker.io=1.12.6-0ubuntu1~16.04.1
+
+docker version
+
+docker run hello-world
+
+
+
+## NOW INSTALL KUBERNETES
+
+apt-get update && apt-get install -y apt-transport-https
+
+apt-get update
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list 
+
+apt-get update
+
+apt-get -y install kubectl=1.7.3-01 kubelet=1.7.3-01 kubeadm=1.7.3-01 kubernetes-cni=0.5.1-00
+
+## CHECK INSTALLATION
+
+docker verion
+
+kubectl version
+
+dpkg -l  |grep kube
+
+ii  kubeadm                                    1.7.3-01                                   amd64        Kubernetes Cluster Bootstrapping Tool
+
+ii  kubectl                                    1.7.3-01                                   amd64        Kubernetes Command Line Tool
+
+ii  kubelet                                    1.7.3-01                                   amd64        Kubernetes Node Agent
+
+ii  kubernetes-cni                             0.5.1-00                                   amd64        Kubernetes CNI
+
+root@tpi-VirtualBox:~# dpkg -l  |grep docker
+
+rc  docker-engine                              17.05.0~ce-0~ubuntu-xenial                 amd64        Docker: the open-source application container engine
+
+ii  docker.io                                  1.12.6-0ubuntu1~16.04.1                    amd64        Linux container runtime
+
+ii  runc                                       1.0.0~rc2+docker1.12.6-0ubuntu1~16.04.1    amd64        Open Container Project - runtime
