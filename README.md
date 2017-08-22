@@ -9,15 +9,15 @@ Redis client - https://github.com/go-redis/redis/
 Redis Server docker hub image - https://hub.docker.com/_/redis/
 
 ## COMPILE
-server/compile.sh
+#### server/compile.sh
 - script to compile .proto files for go/grpc
 - generate binaries for client server with and without docker
 - create docker image using Dockerfile
 
-server/start_docker_app.sh
+#### server/start_docker_app.sh
 - starts docker server image 
 
-server/start_push_docker_hub.sh
+#### server/start_push_docker_hub.sh
 - pushes images to hub.docker.com
 
 Note: Project contains payment.pb.go which is auto generated from payment.proto using protoc compiler. 
@@ -25,9 +25,9 @@ Note: Project contains payment.pb.go which is auto generated from payment.proto 
 ## DEPLOY ON KUBERNETES
 Copy folder kubernetes-deployment to MASTER node and run start_create_microservices.sh. This script will download docker images from hub.docker.com on MASTER and distribute to MINIONS/NODES/SLAVES.
 
-Verify deployment using 
+#### Verify deployment using 
 
-### kubectl get pods --all-namespaces, kubectl get all
+#### kubectl get pods --all-namespaces, kubectl get all
 
 NAMESPACE     NAME                                     READY     STATUS    RESTARTS   AGE
 
