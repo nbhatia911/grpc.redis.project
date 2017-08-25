@@ -298,8 +298,13 @@ UBUNTU_CODENAME=xenial
 3. Make sure you have internet connectivity in Virtual Box, create 2 network adapters.
 
 <pre>
-NAT for internet - do not use this ip for kubenetes
-Host-only Adapter to VirtualBox Host-only ethernet adapter - IP address on this interface shall be used to configure kubernetes for master and slave. In advanced config set promiscuous mode to allow all
+#### NAT for internet
+Do not use this ip for kubenetes
+
+#### Host-only Adapter to VirtualBox Host-only ethernet adapter
+IP address on this interface shall be used to configure kubernetes for master and slave. 
+In advanced config set promiscuous mode to allow all
+
 </pre>
 
 4. Install docker, lxc, golang, protoc compiler, grpc
