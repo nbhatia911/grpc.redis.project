@@ -96,16 +96,31 @@ kubeadm reset
 rm -rf /etc/kubernetes/*
 rm -rf /var/run/kubernetes/*
 rm -rf /run/kubernetes/
+</pre>
 
-### Start kubernetes
+#### Start kubernetes
+<pre>
+
 kubeadm init --apiserver-advertise-address=192.168.56.106 --token-ttl 0 - This should be master ip of VM not NAT IP
 
-kubectl delete namespace sock-shop
+</pre>
 
+#### Create/delete namespaces
+<pre>
+
+kubectl delete namespace sock-shop
 kubectl create namespace sock-shop
 kubectl -n sock-shop get svc front-end
+</pre>
+
+#### Start dashboard
+<pre>
 kubectl create -f https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml
 kubectl proxy - starts dashboard
+</pre>
+
+#### Debug kubernetes
+<pre>
 
 kubectl get all
 kubectl get pods --all-namespaces
