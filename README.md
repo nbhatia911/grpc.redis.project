@@ -59,6 +59,17 @@ route add 10.96.0.1 gw 192.168.56.106
 
 kubeadm init --apiserver-advertise-address=192.168.56.106 --token-ttl 0
 
+Make sure you are connected to internet else kubeadm will complaint and won't start properly. To bypass internet user --kubernetes-version
+
+kubeadm init --apiserver-advertise-address=192.168.56.106 --token-ttl 0 --kubernetes-version v1.7.3
+
+4. Dns pod will keep crashing if weave network is not installed on master. Install using below cmds on master, weave net is not needed on slaves.
+
+export kubever=$(kubectl version | base64 | tr -d '\n')
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
+
+kubectl apply -f https://git.io/weave-kube < --- Do not use this cmd
+
 ### Get cluster IP using
 
 <pre>
@@ -79,12 +90,12 @@ kubernetes   10.96.0.1    <none>        443/TCP   2h
 
 <pre>
 
-kubeadm reset
+kubeadm reset 
 rm -rf /etc/kubernetes/*
 rm -rf /var/run/kubernetes/*
 rm -rf /run/kubernetes/
 
-
+### Start kubernetes
 kubeadm init --apiserver-advertise-address=192.168.56.106 --token-ttl 0 - This should be master ip of VM not NAT IP
 
 kubectl delete namespace sock-shop
