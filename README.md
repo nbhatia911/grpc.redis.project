@@ -8,6 +8,8 @@ Redis client - https://github.com/go-redis/redis/
 
 Redis Server docker hub image - https://hub.docker.com/_/redis/
 
+Ubuntu can be installed on Windows Host for developement which we are using for this project, scroll to end for details.
+
 ## KUBERNETES DASHBOARD - Click on pics to enlarge
 
 <p align="center">
@@ -260,3 +262,44 @@ rc  docker-engine                              17.05.0~ce-0~ubuntu-xenial       
 ii  docker.io                                  1.12.6-0ubuntu1~16.04.1                    amd64        Linux container runtime
 ii  runc                                       1.0.0~rc2+docker1.12.6-0ubuntu1~16.04.1    amd64        Open Container Project - runtime
 </pre>
+
+
+## To install and compile code on Ubuntu follow the below steps
+
+1. Install Virtual Box on Windows host - http://download.virtualbox.org/virtualbox/
+
+Version we installed
+
+http://download.virtualbox.org/virtualbox/5.1.22/VirtualBox-5.1.22-115126-Win.exe
+
+
+2. Download 64bit Ubuntu desktop image and install in Virtual Box - http://releases.ubuntu.com
+
+#### For this project we are using below image
+<pre>
+cat /etc/*release*
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.3 LTS"
+NAME="Ubuntu"
+VERSION="16.04.3 LTS (Xenial Xerus)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 16.04.3 LTS"
+VERSION_ID="16.04"
+HOME_URL="http://www.ubuntu.com/"
+SUPPORT_URL="http://help.ubuntu.com/"
+BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
+VERSION_CODENAME=xenial
+UBUNTU_CODENAME=xenial
+</pre>
+
+3. Make sure you have internet connectivity in Virtual Box, create 2 network adapters.
+
+<pre>
+NAT for internet - do not use this ip for kubenetes
+Host-only Adapter to VirtualBox Host-only ethernet adapter - IP address on this interface shall be used to configure kubernetes for master and slave. In advanced config set promiscuous mode to allow all
+</pre>
+
+4. Install docker, lxc, golang, protoc compiler, grpc
