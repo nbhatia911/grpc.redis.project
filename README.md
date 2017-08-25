@@ -53,33 +53,35 @@ default       redis-3356651156-t7ktp                   1/1       Running   0    
 
 2. If MASTER is started with IP 192.168.56.106, then add below route to all SLAVES. If not weave net will keep crashing.
 
-route add 10.96.0.1 gw 192.168.56.106
-
-3. Always start kubernetes without NAT ip address. NAT ip address can be same for all VM and kubernetes won't start
-
-kubeadm init --apiserver-advertise-address=192.168.56.106 --token-ttl 0
-
-Make sure you are connected to internet else kubeadm will complaint and won't start properly. To bypass internet user --kubernetes-version
-
-kubeadm init --apiserver-advertise-address=192.168.56.106 --token-ttl 0 --kubernetes-version v1.7.3
-
-4. Dns pod will keep crashing if weave network is not installed on master. Install using below cmds on master, weave net is not needed on slaves.
-
-export kubever=$(kubectl version | base64 | tr -d '\n')
-kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
-
-kubectl apply -f https://git.io/weave-kube < --- Do not use this cmd
-
-### Get cluster IP using
 
 <pre>
+
+Get cluster IP using
 kubectl get svc
 
 NAME         CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   10.96.0.1    <none>        443/TCP   2h
 
+route add 10.96.0.1 gw 192.168.56.106
 </pre>
 
+3. Always start kubernetes without NAT ip address. NAT ip address can be same for all VM and kubernetes won't start
+
+<pre>
+kubeadm init --apiserver-advertise-address=192.168.56.106 --token-ttl 0
+
+Make sure you are connected to internet else kubeadm will complaint and won't start properly. To bypass internet user --kubernetes-version
+
+kubeadm init --apiserver-advertise-address=192.168.56.106 --token-ttl 0 --kubernetes-version v1.7.3
+</pre>
+
+4. Dns pod will keep crashing if weave network is not installed on master. Install using below cmds on master, weave net is not needed on slaves.
+
+<pre>
+export kubever=$(kubectl version | base64 | tr -d '\n')
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
+kubectl apply -f https://git.io/weave-kube < --- Do not use this cmd
+</pre>
 
 ## USEFUL COMMANDS
 
