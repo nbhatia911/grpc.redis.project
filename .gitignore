@@ -2,7 +2,8 @@ check_*
 cscope.files
 cscope.out
 tags
-client/client1
-client/client1_docker
-server/server1
-server/server1_docker
+client/grpc_client1
+client/grpc_client1_docker
+server/grpc_server1
+server/grpc_server1_docker
+
