@@ -215,7 +215,8 @@ echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" > /etc/apt/sour
 apt-get update
 
 apt-cache policy docker-engine
-apt-get -y install docker-engine=17.05.0~ce-0~ubuntu-xenial docker.io=1.12.6-0ubuntu1~16.04.1
+apt-get -y install docker.io=1.12.6-0ubuntu1~16.04.1
+apt-get -y install docker-engine=17.05.0~ce-0~ubuntu-xenial
 
 docker version
 docker run hello-world
